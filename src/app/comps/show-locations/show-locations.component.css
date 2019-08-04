@@ -1,0 +1,81 @@
+.locationCont{
+    height: 74vh;
+}
+
+input.addInp {
+    border: none;
+    text-align: center;
+    outline: none;
+    font-family: monospace;
+    padding:12px;
+}
+
+.delBtn{
+    border: 1px solid red;
+    cursor: pointer;
+    outline:none;
+}
+
+.delBtn:hover{
+    background: black;
+    color:red;
+}
+
+.delBtn:active{
+    border: 2px solid red
+}
+
+.addBtn{
+    border: 1px solid green;
+    cursor: pointer;
+    outline:none;
+}
+
+.addBtn:hover{
+    background: white;
+    color:green;
+}
+
+.addBtn:active{
+    border: 2px solid green;
+}
+
+th{
+    padding:10px;
+    text-decoration: underline;
+}
+
+.navOptionsCont {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.navOption{
+    background:none;
+    border: none;
+    outline: none;
+    color: blue;
+    cursor: pointer;
+
+}
+
+.navOption:hover{
+    text-decoration: underline;
+}
+
+.navOption:active{
+    color: red;
+}
+
+iframe{
+    height: calc(68% - 30px);
+}
+
+.viewBtn{
+    cursor: pointer;
+    border:none;
+}
+.viewBtn:hover{
+    background: lightblue;
+}

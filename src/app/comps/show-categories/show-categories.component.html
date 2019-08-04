@@ -1,0 +1,17 @@
+<div>
+<table>
+    <thead>
+        <tr>
+            <th>Remove</th>
+            <th>Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cat of categoryKeys">
+            <td width="25%"><button (click)="removeCategory(categories[cat].name, cat)">&times;</button></td>
+            <td width="25%">{{categories[cat].name}}</td>
+            </tr>
+    </tbody>
+</table>
+   
+</div>

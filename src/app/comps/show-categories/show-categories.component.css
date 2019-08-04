@@ -1,0 +1,20 @@
+td{
+    text-align:center;
+}
+table {
+    margin: auto;
+}
+button {
+    width: 50%;
+    border: none;
+    outline:none;
+    cursor: pointer;
+}
+button:hover{
+    background: black;
+    color:red
+}
+button:active{
+    background:red;
+    color:black
+}

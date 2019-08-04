@@ -1,0 +1,93 @@
+<div class="locationCont">
+<div class="navOptionsCont">
+    <button class="navOption" (click)="viewMode()">View locations</button> | 
+    <button class="navOption" (click)="addMode()">Add new locations</button> | 
+    <button class="navOption" (click)="editMode()">Edit locations</button> | 
+    <button class="navOption" (click)="removalMode()">Remove locations</button>
+</div>
+
+<form [formGroup]="addLocationForm">
+    <table>
+        <thead>
+            <th></th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Latitude</th>
+            <th>Longtitude</th>
+            <th>Category</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let location of locations" #locationTr>
+                <td style="text-align:center;" width="1%">
+                    <button *ngIf="addOrEdit === 'remove'" class="delBtn" (click)="deleteLocation(locationTr, location.category_id)"
+                        style="width:100%;">&times;</button>
+                    <button *ngIf="addOrEdit === 'view'" class="viewBtn" (click)="viewMap(location)"
+                        style="width:100%;">view</button>
+                    <label *ngIf="addOrEdit === 'edit'"><input type="radio" name="edit" (change)="chooseWhoToEdit(location)" [value]="location" >&#9998;</label><br>
+                </td>
+                <td style="text-align:center;" width="5%">{{location.name}}</td>
+                <td style="text-align:center;" width="5%">{{location.address}}</td>
+                <td style="text-align:center;" width="5%">{{location.lat}}</td>
+                <td style="text-align:center;" width="5%">{{location.lon}}</td>
+                <td style="text-align:center;" width="5%">{{categories[location.category_id].name}}</td>
+            </tr>
+            <tr *ngIf="addOrEdit === 'add'" style="background: whitesmoke;">
+                <td style="text-align:center;" width="1%">
+                    <button class="addBtn" style="width:100%;" (click)="addLocation()">ADD</button>
+                </td>
+                <td style="text-align:center;" width="5%">
+                    <input formControlName="name" class="addInp" placeholder="Add Name">
+                </td>
+                <td style="text-align:center;" width="5%">
+                    <input formControlName="address" class="addInp" placeholder="Add Address">
+                </td>
+                <td style="text-align:center;" width="5%">
+                    <input type="number" formControlName="lat" class="addInp" placeholder="Add Latitude">
+                </td>
+                <td style="text-align:center;" width="5%">
+                    <input type="number" formControlName="lon" class="addInp" placeholder="Add Longtitude">
+                </td>
+                <td style="text-align:center;" width="5%">
+                    <select formControlName="category_id" class="addInp">
+                        <option *ngFor="let category of categoryKeys; let i = index" [value]="category">
+                            {{categories[category].name}}</option>
+                    </select>
+                </td>
+            </tr>
+            <tr *ngIf="addOrEdit === 'edit'" style="background: whitesmoke;">
+                <td style="text-align:center;" width="1%">
+                    <button class="addBtn" style="width:100%;" (click)="editLocation()">EDIT</button>
+                </td>
+                <td style="text-align:center;" width="5%">
+                    <input formControlName="name" class="addInp" placeholder="Edit Name">
+                </td>
+                <td style="text-align:center;" width="5%">
+                    <input formControlName="address" class="addInp" placeholder="Edit Address">
+                </td>
+                <td style="text-align:center;" width="5%">
+                    <input type="number" formControlName="lat" class="addInp" placeholder="Edit Latitude">
+                </td>
+                <td style="text-align:center;" width="5%">
+                    <input type="number" formControlName="lon" class="addInp" placeholder="Edit Longtitude">
+                </td>
+                <td style="text-align:center;" width="5%">
+                    <select formControlName="category_id" class="addInp">
+                        <option *ngFor="let category of categoryKeys; let i = index" [value]="category">
+                            {{categories[category].name}}</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+<iframe 
+*ngIf="addOrEdit === 'view'"
+  width="100%" 
+  frameborder="0" 
+  scrolling="no" 
+  marginheight="0" 
+  marginwidth="0" 
+  [src]="viewMap()"
+ >
+ </iframe>
+</div>
